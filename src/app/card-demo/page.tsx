@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { getAssetPath } from "@/lib/utils";
 
 const STATES = [
   "Default",
@@ -168,7 +169,7 @@ export default function CardDemoPage() {
   const [showRef, setShowRef] = useState(true);
 
   useEffect(() => {
-    fetch("/assets/icons/brands.svg")
+    fetch(getAssetPath("/assets/icons/brands.svg"))
       .then((r) => r.text())
       .then(setIconSvg);
   }, []);
@@ -440,7 +441,7 @@ export default function CardDemoPage() {
         {showRef && (
           <div style={{ textAlign: "center" }}>
             <Image
-              src={`/assets/card-states/${stateFileMap[activeState]}.png`}
+              src={getAssetPath(`/assets/card-states/${stateFileMap[activeState]}.png`)}
               alt={activeState}
               width={191}
               height={130}

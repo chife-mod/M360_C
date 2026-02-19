@@ -4,6 +4,7 @@ import { Fragment, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { SignalConfig } from "@/lib/signals-data";
 import { getInsightDescription } from "@/lib/signals-data";
+import { getAssetPath } from "@/lib/utils";
 
 function hexToRgba(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -15,10 +16,10 @@ function hexToRgba(hex: string, alpha: number): string {
 function useIconSvg(iconName: string) {
   const [svg, setSvg] = useState("");
   useEffect(() => {
-    fetch(`/assets/icons/${iconName}.svg`)
+    fetch(getAssetPath(`/assets/icons/${iconName}.svg`))
       .then((res) => res.text())
       .then(setSvg)
-      .catch(() => {});
+      .catch(() => { });
   }, [iconName]);
   return svg;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getAssetPath } from "@/lib/utils";
 
 type IconProps = {
   name: string;
@@ -14,7 +15,7 @@ export function Icon({ name, size = 22, className = "", color }: IconProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/assets/icons/${name}.svg`)
+    fetch(getAssetPath(`/assets/icons/${name}.svg`))
       .then((res) => res.text())
       .then((text) => {
         setSvgContent(text);

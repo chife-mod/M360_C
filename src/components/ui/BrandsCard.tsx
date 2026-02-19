@@ -1,4 +1,5 @@
-"use client";
+
+import { getAssetPath } from "@/lib/utils";
 
 /**
  * Pixel-perfect Brands Card component
@@ -81,7 +82,7 @@ export function BrandsCard() {
       {/* Иконка Tabler Icons - размер 32x32 */}
       <div className="relative flex items-center justify-center z-10" style={{ opacity: 0.4 }}>
         <img
-          src="/assets/icons/brands-icon.svg"
+          src={getAssetPath("/assets/icons/brands-icon.svg")}
           alt="Brands icon"
           style={{
             width: '32px',

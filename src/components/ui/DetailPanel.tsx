@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { getAssetPath } from "@/lib/utils";
 
 export function DetailPanel() {
   return (
@@ -18,10 +19,10 @@ export function DetailPanel() {
       {/* Icons */}
       <div className="flex items-center gap-3">
         <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[rgba(0,212,255,0.15)] to-[rgba(0,212,255,0.03)] border border-[rgba(0,212,255,0.2)] flex items-center justify-center">
-          <img src="/assets/icons/pricing.svg" alt="Pricing" className="w-5 h-5" style={{ filter: 'brightness(0) saturate(100%) invert(67%) sepia(100%) saturate(7500%) hue-rotate(160deg) brightness(101%) contrast(101%)' }} />
+          <img src={getAssetPath("/assets/icons/pricing.svg")} alt="Pricing" className="w-5 h-5" style={{ filter: 'brightness(0) saturate(100%) invert(67%) sepia(100%) saturate(7500%) hue-rotate(160deg) brightness(101%) contrast(101%)' }} />
         </div>
         <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[rgba(0,229,155,0.15)] to-[rgba(0,229,155,0.03)] border border-[rgba(0,229,155,0.2)] flex items-center justify-center">
-          <img src="/assets/icons/availability.svg" alt="Availability" className="w-5 h-5" style={{ filter: 'brightness(0) saturate(100%) invert(67%) sepia(100%) saturate(7500%) hue-rotate(120deg) brightness(101%) contrast(101%)' }} />
+          <img src={getAssetPath("/assets/icons/availability.svg")} alt="Availability" className="w-5 h-5" style={{ filter: 'brightness(0) saturate(100%) invert(67%) sepia(100%) saturate(7500%) hue-rotate(120deg) brightness(101%) contrast(101%)' }} />
         </div>
       </div>
 

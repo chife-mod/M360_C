@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { getAssetPath } from "@/lib/utils";
 import type { SourceItem } from "@/lib/sources-data";
 
 export type CardState = "default" | "hover" | "active" | "activeHover" | "selected" | "selectedHover" | "disabled";
@@ -63,13 +64,13 @@ const stateStyles: Record<CardState, {
   },
 };
 
-export function SourceCard({ 
-  source, 
-  index, 
+export function SourceCard({
+  source,
+  index,
   state = "default",
   isSelected = false,
   hasSelectedCard = false,
-  onClick 
+  onClick
 }: Props) {
   const glow = source.glow ? {
     cyan: {
@@ -92,11 +93,11 @@ export function SourceCard({
     },
   }[source.glow] : null;
 
-  const currentState = state === "disabled" 
-    ? "disabled" 
-    : isSelected 
-      ? state === "hover" || state === "activeHover" 
-        ? "selectedHover" 
+  const currentState = state === "disabled"
+    ? "disabled"
+    : isSelected
+      ? state === "hover" || state === "activeHover"
+        ? "selectedHover"
         : "selected"
       : state === "hover" || state === "activeHover"
         ? "hover"
@@ -105,7 +106,7 @@ export function SourceCard({
           : "default";
 
   const styles = stateStyles[currentState];
-  const iconPath = `/assets/icons/${source.icon}.svg`;
+  const iconPath = getAssetPath(`/assets/icons/${source.icon}.svg`);
 
   // Если есть выбранная карточка и эта не выбрана, подсвечиваем цветом
   const highlightColor = hasSelectedCard && !isSelected && glow ? glow.border : null;
@@ -187,8 +188,8 @@ export function SourceCard({
               width: '32px',
               height: '32px',
               objectFit: 'contain',
-              filter: glow && isSelected 
-                ? 'none' 
+              filter: glow && isSelected
+                ? 'none'
                 : 'brightness(0) saturate(100%) invert(55%) sepia(8%) saturate(1000%) hue-rotate(210deg) brightness(95%) contrast(85%)',
             }}
           />
