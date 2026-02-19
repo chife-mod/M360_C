@@ -61,3 +61,18 @@
 - Example: Brands → Pricing, Products, Availability
 
 ---
+
+## 2026-02-19 — Deployment Issues & Fixes
+
+### GitHub Pages (Failed)
+- Attempted to deploy to GitHub Pages
+- Issues with asset paths (CSS/JS 404s) due to subdirectory hosting (`/M360_C/`)
+- Tried configuring `basePath` and `assetPrefix` in `next.config.ts` but styles remained broken
+
+### Netlify (Success)
+- Switching to Netlify for easier root-domain hosting
+- Created `netlify.toml`:
+  - Build command: `npm run build`
+  - Publish directory: `out`
+- Removed `basePath` / `assetPrefix` from Next.js config to serve from root
+- Deploy successful: https://graceful-cendol-0a11de.netlify.app/
