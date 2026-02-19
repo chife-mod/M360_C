@@ -1,0 +1,1045 @@
+{
+  "file": {
+    "key": "oR5AwDiD7ek4IxUOgyZCbU",
+    "name": "Market 360 Design"
+  },
+  "cardStates": {
+    "default": {
+      "id": "100:400",
+      "name": "Property 1=Default",
+      "width": 191,
+      "height": 130,
+      "backgroundColor": "rgba(17, 21, 57, 1)",
+      "borderRadius": 12,
+      "padding": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      },
+      "gap": 12,
+      "border": null,
+      "borderWidth": null,
+      "effects": [],
+      "elements": [
+        {
+          "id": "100:383",
+          "name": "Tabler Icons / tabler:tag",
+          "type": "INSTANCE",
+          "width": 32,
+          "height": 32,
+          "x": 79.5,
+          "y": 33,
+          "opacity": 0.4000000059604645,
+          "fill": "rgba(255, 255, 255, 1)"
+        },
+        {
+          "id": "I100:383;101:827",
+          "name": "Group",
+          "type": "GROUP",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37
+        },
+        {
+          "id": "I100:383;101:828",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 2.6666667461395264,
+          "height": 2.6666667461395264,
+          "x": 88.166748046875,
+          "y": 41.666748046875,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "I100:383;101:829",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "100:390",
+          "name": "Brands",
+          "type": "TEXT",
+          "width": 47,
+          "height": 20,
+          "x": 72,
+          "y": 77,
+          "opacity": 0.699999988079071,
+          "fill": "rgba(255, 255, 255, 1)",
+          "textStyle": {
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "lineHeight": 19.600000381469727,
+            "letterSpacing": 0
+          }
+        },
+        {
+          "id": "100:611",
+          "name": "Ellipse 849",
+          "type": "ELLIPSE",
+          "width": 128,
+          "height": 128,
+          "x": 32,
+          "y": 102,
+          "fill": "rgba(70, 254, 195, 1)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "101:802",
+          "name": "Ellipse 850",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": -41,
+          "y": -46,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "101:811",
+          "name": "Ellipse 851",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": 145,
+          "y": 84,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "114:2244",
+          "name": "Ellipse 867",
+          "type": "ELLIPSE",
+          "width": 12,
+          "height": 12,
+          "x": 171,
+          "y": 8,
+          "fill": "rgba(255, 255, 255, 1)",
+          "stroke": "rgba(255, 255, 255, 0.20000000298023224)",
+          "strokeWidth": 1
+        }
+      ]
+    },
+    "hover": {
+      "id": "222:6010",
+      "name": "Property 1=Hover",
+      "width": 191,
+      "height": 130,
+      "backgroundColor": "rgba(17, 21, 57, 1)",
+      "borderRadius": 12,
+      "padding": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      },
+      "gap": 12,
+      "border": null,
+      "borderWidth": null,
+      "effects": [],
+      "elements": [
+        {
+          "id": "222:6011",
+          "name": "Tabler Icons / tabler:tag",
+          "type": "INSTANCE",
+          "width": 32,
+          "height": 32,
+          "x": 79.5,
+          "y": 33,
+          "opacity": 0.4000000059604645,
+          "fill": "rgba(255, 255, 255, 1)"
+        },
+        {
+          "id": "I222:6011;101:827",
+          "name": "Group",
+          "type": "GROUP",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37
+        },
+        {
+          "id": "I222:6011;101:828",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 2.6666667461395264,
+          "height": 2.6666667461395264,
+          "x": 88.166748046875,
+          "y": 41.666748046875,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "I222:6011;101:829",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "222:6012",
+          "name": "Brands",
+          "type": "TEXT",
+          "width": 47,
+          "height": 20,
+          "x": 72,
+          "y": 77,
+          "opacity": 0.699999988079071,
+          "fill": "rgba(255, 255, 255, 1)",
+          "textStyle": {
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "lineHeight": 19.600000381469727,
+            "letterSpacing": 0
+          }
+        },
+        {
+          "id": "222:6013",
+          "name": "Ellipse 849",
+          "type": "ELLIPSE",
+          "width": 128,
+          "height": 128,
+          "x": 32,
+          "y": 102,
+          "fill": "rgba(70, 254, 195, 1)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6014",
+          "name": "Ellipse 850",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": -41,
+          "y": -46,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6015",
+          "name": "Ellipse 851",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": 145,
+          "y": 84,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6016",
+          "name": "Ellipse 867",
+          "type": "ELLIPSE",
+          "width": 12,
+          "height": 12,
+          "x": 171,
+          "y": 8,
+          "fill": "rgba(255, 255, 255, 1)",
+          "stroke": "rgba(255, 255, 255, 0.20000000298023224)",
+          "strokeWidth": 1
+        }
+      ]
+    },
+    "active": {
+      "id": "222:6000",
+      "name": "Property 1=Active",
+      "width": 191,
+      "height": 130,
+      "backgroundColor": "rgba(17, 21, 57, 1)",
+      "borderRadius": 12,
+      "padding": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      },
+      "gap": 12,
+      "border": "rgba(100, 110, 202, 1)",
+      "borderWidth": 1,
+      "effects": [
+        {
+          "type": "INNER_SHADOW",
+          "radius": 20,
+          "color": "rgba(100, 110, 202, 1)",
+          "offset": {
+            "x": 0,
+            "y": -2
+          }
+        }
+      ],
+      "elements": [
+        {
+          "id": "222:6001",
+          "name": "Tabler Icons / tabler:tag",
+          "type": "INSTANCE",
+          "width": 32,
+          "height": 32,
+          "x": 79.5,
+          "y": 33,
+          "opacity": 0.4000000059604645,
+          "fill": "rgba(255, 255, 255, 1)"
+        },
+        {
+          "id": "I222:6001;101:827",
+          "name": "Group",
+          "type": "GROUP",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37
+        },
+        {
+          "id": "I222:6001;101:828",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 2.6666667461395264,
+          "height": 2.6666667461395264,
+          "x": 88.166748046875,
+          "y": 41.666748046875,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "I222:6001;101:829",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "222:6002",
+          "name": "Brands",
+          "type": "TEXT",
+          "width": 47,
+          "height": 20,
+          "x": 72,
+          "y": 77,
+          "opacity": 0.699999988079071,
+          "fill": "rgba(255, 255, 255, 1)",
+          "textStyle": {
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "lineHeight": 19.600000381469727,
+            "letterSpacing": 0
+          }
+        },
+        {
+          "id": "222:6003",
+          "name": "Ellipse 849",
+          "type": "ELLIPSE",
+          "width": 128,
+          "height": 128,
+          "x": 32,
+          "y": 102,
+          "fill": "rgba(70, 254, 195, 1)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6004",
+          "name": "Ellipse 850",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": -41,
+          "y": -46,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6005",
+          "name": "Ellipse 851",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": 145,
+          "y": 84,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6006",
+          "name": "Ellipse 867",
+          "type": "ELLIPSE",
+          "width": 12,
+          "height": 12,
+          "x": 171,
+          "y": 8,
+          "fill": "rgba(255, 255, 255, 1)",
+          "stroke": "rgba(255, 255, 255, 0.20000000298023224)",
+          "strokeWidth": 1
+        }
+      ]
+    },
+    "activeHover": {
+      "id": "277:2082",
+      "name": "Property 1=Active Hover",
+      "width": 191,
+      "height": 130,
+      "backgroundColor": "rgba(17, 21, 57, 1)",
+      "borderRadius": 12,
+      "padding": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      },
+      "gap": 12,
+      "border": "rgba(100, 110, 202, 1)",
+      "borderWidth": 1,
+      "effects": [
+        {
+          "type": "INNER_SHADOW",
+          "radius": 20,
+          "color": "rgba(100, 110, 202, 1)",
+          "offset": {
+            "x": 0,
+            "y": -2
+          }
+        }
+      ],
+      "elements": [
+        {
+          "id": "277:2083",
+          "name": "Tabler Icons / tabler:tag",
+          "type": "INSTANCE",
+          "width": 32,
+          "height": 32,
+          "x": 79.5,
+          "y": 33,
+          "opacity": 0.4000000059604645,
+          "fill": "rgba(255, 255, 255, 1)"
+        },
+        {
+          "id": "I277:2083;101:827",
+          "name": "Group",
+          "type": "GROUP",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37
+        },
+        {
+          "id": "I277:2083;101:828",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 2.6666667461395264,
+          "height": 2.6666667461395264,
+          "x": 88.166748046875,
+          "y": 41.666748046875,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "I277:2083;101:829",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "277:2084",
+          "name": "Brands",
+          "type": "TEXT",
+          "width": 47,
+          "height": 20,
+          "x": 72,
+          "y": 77,
+          "opacity": 0.699999988079071,
+          "fill": "rgba(255, 255, 255, 1)",
+          "textStyle": {
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "lineHeight": 19.600000381469727,
+            "letterSpacing": 0
+          }
+        },
+        {
+          "id": "277:2085",
+          "name": "Ellipse 849",
+          "type": "ELLIPSE",
+          "width": 128,
+          "height": 128,
+          "x": 32,
+          "y": 102,
+          "fill": "rgba(70, 254, 195, 1)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "277:2086",
+          "name": "Ellipse 850",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": -41,
+          "y": -46,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "277:2087",
+          "name": "Ellipse 851",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": 145,
+          "y": 84,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "277:2088",
+          "name": "Ellipse 867",
+          "type": "ELLIPSE",
+          "width": 12,
+          "height": 12,
+          "x": 171,
+          "y": 8,
+          "fill": "rgba(255, 255, 255, 1)",
+          "stroke": "rgba(255, 255, 255, 0.20000000298023224)",
+          "strokeWidth": 1
+        }
+      ]
+    },
+    "selected": {
+      "id": "222:6020",
+      "name": "Property 1=Selected",
+      "width": 191,
+      "height": 130,
+      "backgroundColor": "rgba(17, 21, 57, 1)",
+      "borderRadius": 12,
+      "padding": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      },
+      "gap": 12,
+      "border": "rgba(100, 110, 202, 1)",
+      "borderWidth": 1,
+      "effects": [
+        {
+          "type": "INNER_SHADOW",
+          "radius": 20,
+          "color": "rgba(100, 110, 202, 1)",
+          "offset": {
+            "x": 0,
+            "y": -2
+          }
+        }
+      ],
+      "elements": [
+        {
+          "id": "222:6021",
+          "name": "Tabler Icons / tabler:tag",
+          "type": "INSTANCE",
+          "width": 32,
+          "height": 32,
+          "x": 79.5,
+          "y": 33,
+          "fill": "rgba(255, 255, 255, 1)"
+        },
+        {
+          "id": "I222:6021;101:827",
+          "name": "Group",
+          "type": "GROUP",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37
+        },
+        {
+          "id": "I222:6021;101:828",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 2.6666667461395264,
+          "height": 2.6666667461395264,
+          "x": 88.166748046875,
+          "y": 41.666748046875,
+          "stroke": "rgba(70, 254, 195, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "I222:6021;101:829",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37,
+          "stroke": "rgba(70, 254, 195, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "222:6022",
+          "name": "Brands",
+          "type": "TEXT",
+          "width": 47,
+          "height": 20,
+          "x": 72,
+          "y": 77,
+          "fill": "rgba(70, 254, 195, 1)",
+          "textStyle": {
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "lineHeight": 19.600000381469727,
+            "letterSpacing": 0
+          }
+        },
+        {
+          "id": "222:6023",
+          "name": "Ellipse 849",
+          "type": "ELLIPSE",
+          "width": 128,
+          "height": 128,
+          "x": 32,
+          "y": 102,
+          "fill": "rgba(70, 254, 195, 1)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6024",
+          "name": "Ellipse 850",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": -41,
+          "y": -46,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6025",
+          "name": "Ellipse 851",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": 145,
+          "y": 84,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6026",
+          "name": "Ellipse 867",
+          "type": "ELLIPSE",
+          "width": 12,
+          "height": 12,
+          "x": 171,
+          "y": 8,
+          "fill": "rgba(70, 254, 195, 1)",
+          "stroke": "rgba(255, 255, 255, 0.20000000298023224)",
+          "strokeWidth": 1
+        }
+      ]
+    },
+    "selectedHover": {
+      "id": "277:2092",
+      "name": "Property 1=Selected Hover",
+      "width": 191,
+      "height": 130,
+      "backgroundColor": "rgba(17, 21, 57, 1)",
+      "borderRadius": 12,
+      "padding": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      },
+      "gap": 12,
+      "border": "rgba(100, 110, 202, 1)",
+      "borderWidth": 1,
+      "effects": [
+        {
+          "type": "INNER_SHADOW",
+          "radius": 20,
+          "color": "rgba(100, 110, 202, 1)",
+          "offset": {
+            "x": 0,
+            "y": -2
+          }
+        }
+      ],
+      "elements": [
+        {
+          "id": "277:2093",
+          "name": "Tabler Icons / tabler:tag",
+          "type": "INSTANCE",
+          "width": 32,
+          "height": 32,
+          "x": 79.5,
+          "y": 33,
+          "fill": "rgba(255, 255, 255, 1)"
+        },
+        {
+          "id": "I277:2093;101:827",
+          "name": "Group",
+          "type": "GROUP",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37
+        },
+        {
+          "id": "I277:2093;101:828",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 2.6666667461395264,
+          "height": 2.6666667461395264,
+          "x": 88.166748046875,
+          "y": 41.666748046875,
+          "stroke": "rgba(70, 254, 195, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "I277:2093;101:829",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37,
+          "stroke": "rgba(70, 254, 195, 1)",
+          "strokeWidth": 2
+        },
+        {
+          "id": "277:2094",
+          "name": "Brands",
+          "type": "TEXT",
+          "width": 47,
+          "height": 20,
+          "x": 72,
+          "y": 77,
+          "fill": "rgba(70, 254, 195, 1)",
+          "textStyle": {
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "lineHeight": 19.600000381469727,
+            "letterSpacing": 0
+          }
+        },
+        {
+          "id": "277:2095",
+          "name": "Ellipse 849",
+          "type": "ELLIPSE",
+          "width": 128,
+          "height": 128,
+          "x": 32,
+          "y": 102,
+          "fill": "rgba(70, 254, 195, 1)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "277:2096",
+          "name": "Ellipse 850",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": -41,
+          "y": -46,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "277:2097",
+          "name": "Ellipse 851",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": 145,
+          "y": 84,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "277:2098",
+          "name": "Ellipse 867",
+          "type": "ELLIPSE",
+          "width": 12,
+          "height": 12,
+          "x": 171,
+          "y": 8,
+          "fill": "rgba(70, 254, 195, 1)",
+          "stroke": "rgba(255, 255, 255, 0.20000000298023224)",
+          "strokeWidth": 1
+        }
+      ]
+    },
+    "disabled": {
+      "id": "222:6030",
+      "name": "Property 1=Disable",
+      "width": 191,
+      "height": 130,
+      "backgroundColor": "rgba(17, 21, 57, 1)",
+      "borderRadius": 12,
+      "padding": {
+        "left": 24,
+        "right": 24,
+        "top": 24,
+        "bottom": 24
+      },
+      "gap": 12,
+      "border": "rgba(58, 64, 120, 1)",
+      "borderWidth": 2,
+      "effects": [],
+      "elements": [
+        {
+          "id": "222:6031",
+          "name": "Tabler Icons / tabler:tag",
+          "type": "INSTANCE",
+          "width": 32,
+          "height": 32,
+          "x": 79.5,
+          "y": 33,
+          "opacity": 0.20000000298023224,
+          "fill": "rgba(255, 255, 255, 1)"
+        },
+        {
+          "id": "I222:6031;101:827",
+          "name": "Group",
+          "type": "GROUP",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37
+        },
+        {
+          "id": "I222:6031;101:828",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 2.6666667461395264,
+          "height": 2.6666667461395264,
+          "x": 88.166748046875,
+          "y": 41.666748046875,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 1
+        },
+        {
+          "id": "I222:6031;101:829",
+          "name": "Vector",
+          "type": "VECTOR",
+          "width": 24.00232696533203,
+          "height": 24.00232696533203,
+          "x": 83.5,
+          "y": 37,
+          "stroke": "rgba(255, 255, 255, 1)",
+          "strokeWidth": 1
+        },
+        {
+          "id": "222:6032",
+          "name": "Brands",
+          "type": "TEXT",
+          "width": 47,
+          "height": 20,
+          "x": 72,
+          "y": 77,
+          "opacity": 0.20000000298023224,
+          "fill": "rgba(255, 255, 255, 1)",
+          "textStyle": {
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "lineHeight": 19.600000381469727,
+            "letterSpacing": 0
+          }
+        },
+        {
+          "id": "222:6033",
+          "name": "Ellipse 849",
+          "type": "ELLIPSE",
+          "width": 128,
+          "height": 128,
+          "x": 32,
+          "y": 102,
+          "fill": "rgba(70, 254, 195, 1)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6034",
+          "name": "Ellipse 850",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": -41,
+          "y": -46,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6035",
+          "name": "Ellipse 851",
+          "type": "ELLIPSE",
+          "width": 92,
+          "height": 92,
+          "x": 145,
+          "y": 84,
+          "fill": "rgba(255, 255, 255, 0.14000000059604645)",
+          "effects": [
+            {
+              "type": "LAYER_BLUR",
+              "radius": 100,
+              "color": null
+            }
+          ]
+        },
+        {
+          "id": "222:6036",
+          "name": "Ellipse 867",
+          "type": "ELLIPSE",
+          "width": 12,
+          "height": 12,
+          "x": 171,
+          "y": 8,
+          "fill": "rgba(255, 255, 255, 1)",
+          "stroke": "rgba(255, 255, 255, 0.20000000298023224)",
+          "strokeWidth": 1
+        }
+      ]
+    }
+  }
+}
