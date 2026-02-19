@@ -2,6 +2,30 @@
 
 ---
 
+## 2026-02-19 — Signal Intersection Explorer
+
+### Layout
+- Left: 4×4 grid of signal tiles (reuses DataCard)
+- Right: Insight panel (515×532px) with empty state / 1–3 signals
+
+### Logic
+- 5 active signals: Brands, Pricing, Availability, Reviews, Media
+- Max 3 selections; compatibility matrix in `signals-data.ts`
+- `getCompatibleSignals()` — which tiles stay clickable
+
+### Right panel
+- Empty: sparkles icon + “Select multiple signals…”
+- 1–3 signals: icons (64px, no frame), colored titles, descriptions, Analyze button
+- Animated bar chart (15 bars): heights + colors change with selection
+- Bar outline gradient: 20% opacity top → 0% bottom
+
+### Stack
+- React, TypeScript, Next.js, Framer Motion, Tailwind
+- Pushed to GitHub: https://github.com/chife-mod/M360_C
+- Deploy: Vercel (connect repo) or `npx vercel --prod`
+
+---
+
 ## 2026-02-18 — Card System & Interactive Grid
 
 ### Pixel-perfect DataCard (7 states)
