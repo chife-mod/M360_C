@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,75157,t=>{"use strict";t.s(["getAssetPath",0,t=>{let e=t.startsWith("/")?t:`/${t}`;return`/M360_C${e}`}])}]);
