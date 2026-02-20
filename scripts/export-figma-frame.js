@@ -16,7 +16,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const FIGMA_TOKEN = process.env.FIGMA_TOKEN || 'figd_MyCJzbt6ae1JwF7YvounKb5Oi0npZD0h4xYT5PO_';
+const FIGMA_TOKEN = process.env.FIGMA_TOKEN;
 
 async function exportFigmaNode(fileKey, nodeId, format = 'svg', scale = 2) {
   // Конвертируем формат node-id из URL (277-420) в формат API (277:420)

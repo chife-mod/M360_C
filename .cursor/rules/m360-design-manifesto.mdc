@@ -76,6 +76,14 @@ Transitions: always `transition-all duration-200` minimum.
 
 `/dashboard` is the internal workspace index. When a new page or component demo is completed, add it to the `MODULES` array in `src/app/dashboard/page.tsx`. Status: `live` | `demo` | `wip`.
 
+## Secrets & Environment Variables
+
+- **NEVER hardcode API tokens, keys or passwords** in source files
+- All secrets go in `.env.local` — it is in `.gitignore` and never committed
+- Use `process.env.FIGMA_TOKEN` (no fallback value) in scripts
+- Before any `git commit`, verify no `figd_`, `Bearer`, or API key strings exist in tracked files
+- If a secret is accidentally committed: rotate the key immediately in Figma/service, then remove from code
+
 ## Communication Protocol
 
 - Respond in **Russian** to this user

@@ -7,7 +7,7 @@
 
 const https = require('https');
 
-const FIGMA_TOKEN = process.env.FIGMA_TOKEN || 'figd_MyCJzbt6ae1JwF7YvounKb5Oi0npZD0h4xYT5PO_';
+const FIGMA_TOKEN = process.env.FIGMA_TOKEN;
 
 async function getFigmaFileNodes(fileKey, nodeIds) {
   const ids = Array.isArray(nodeIds) ? nodeIds.join(',') : nodeIds;
