@@ -19,6 +19,11 @@ export default function Home() {
   const [showAiOnly, setShowAiOnly] = useState(false);
   const [resetHovered, setResetHovered] = useState(false);
 
+  const handleToggleChange = useCallback((value: boolean) => {
+    setShowAiOnly(value);
+    setSelectedIds([]);
+  }, []);
+
   const compatibleIds = useMemo(
     () => getCompatibleSignals(selectedIds),
     [selectedIds]
@@ -81,7 +86,7 @@ export default function Home() {
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <Toggle
               checked={showAiOnly}
-              onChange={setShowAiOnly}
+              onChange={handleToggleChange}
             />
             <span
               style={{
