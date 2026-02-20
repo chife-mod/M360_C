@@ -46,6 +46,8 @@ const ICONS = {
   reviews:      "I277:1289;100:383",
   seo:          "I277:1290;100:383",
   trending:     "I277:1291;100:383",
+  "support-chats": "I306:1290;100:383",
+  "reload": "I306:1561;306:1557",
 };
 
 function httpsGet(url, headers = {}) {

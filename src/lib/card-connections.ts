@@ -25,13 +25,13 @@ export const cardConnections: CardConnection[] = [
   { from: "social", to: ["media", "influencers", "ads"] },
   { from: "influencers", to: ["social", "ads", "evisibility"] },
   { from: "ads", to: ["social", "influencers", "evisibility"] },
-  { from: "novelties", to: ["products", "trending", "categories"] },
+  { from: "novelties", to: ["products", "support-chats", "categories"] },
   { from: "newsletters", to: ["media", "social", "evisibility"] },
   { from: "evisibility", to: ["social", "influencers", "seo"] },
   { from: "retailers", to: ["availability", "pricing", "products"] },
   { from: "reviews", to: ["products", "retailers", "seo"] },
-  { from: "seo", to: ["reviews", "evisibility", "trending"] },
-  { from: "trending", to: ["seo", "novelties", "products"] },
+  { from: "seo", to: ["reviews", "evisibility", "support-chats"] },
+  { from: "support-chats", to: ["seo", "novelties", "products"] },
 ];
 
 /**

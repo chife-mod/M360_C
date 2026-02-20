@@ -19,13 +19,13 @@ export const cardConnections: Record<string, string[]> = {
   products:     ["brands", "pricing", "categories"],
   influencers:  ["social", "media", "ads"],
   ads:          ["media", "social", "evisibility"],
-  novelties:    ["trending", "retailers", "products"],
+  novelties:    ["support-chats", "retailers", "products"],
   newsletters:  ["media", "social", "evisibility"],
   evisibility:  ["seo", "ads", "retailers"],
   retailers:    ["pricing", "availability", "products"],
   reviews:      ["products", "brands", "retailers"],
-  seo:          ["evisibility", "media", "trending"],
-  trending:     ["novelties", "seo", "social"],
+  seo:          ["evisibility", "media", "support-chats"],
+  "support-chats": ["novelties", "seo", "social"],
 };
 
 export const sourcesGrid: SourceItem[][] = [
@@ -51,6 +51,6 @@ export const sourcesGrid: SourceItem[][] = [
     { id: "retailers",   label: "Retailers",        icon: "retailers",    color: "#F472B6" },
     { id: "reviews",     label: "Reviews",          icon: "reviews",      color: "#00D4FF" },
     { id: "seo",         label: "SEO & AI rankings",icon: "seo",          color: "#84CC16" },
-    { id: "trending",    label: "Trending offers",  icon: "trending",     color: "#FF4560" },
+    { id: "support-chats", label: "Support Chats",  icon: "support-chats", color: "#FF4560" },
   ],
 ];

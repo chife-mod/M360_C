@@ -215,14 +215,12 @@ export function InsightPanel({ selectedSignals }: Props) {
                 color: "white",
                 opacity: 0.8,
                 textAlign: "center",
-                width: 299,
+                width: 318,
                 fontFamily:
                   "var(--font-inter), Inter, system-ui, sans-serif",
               }}
             >
-              Select multiple signals
-              <br />
-              to generate combined insights
+              Select multiple data sources to generate combined insights
             </p>
           </motion.div>
         )}

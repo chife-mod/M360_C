@@ -1,0 +1,26 @@
+---
+description: Figma icon export — always use project scripts, never create icons manually
+globs: "**/icons/**", "**/*.tsx", "**/sources-data.ts"
+alwaysApply: false
+---
+
+# Figma Icon Export Rule
+
+When adding or updating icons from Figma in this project:
+
+1. **Read the knowledge base first**: `knowledge-base/figma-export-guide.md`
+
+2. **Never create icons manually** — always export from Figma using the project scripts.
+
+3. **Workflow**:
+   - To find the icon node ID: `node scripts/find-figma-node.js <file_key> <frame_node_id>`
+     - Example: `node scripts/find-figma-node.js oR5AwDiD7ek4IxUOgyZCbU 306-1290`
+   - Export with clean processing (currentColor, no baked opacity):
+     - Add the icon to `scripts/export-figma-icons-clean.js` ICONS map with its instance ID (e.g. `I306:1290;100:383`)
+     - Run: `npm run figma:icons-clean -- --icon=<name>`
+   - Or quick export: `node scripts/export-figma-frame.js <file_key> <node_id> <name> svg`
+     - For icon instances use the full ID like `I306:1290;100:383`
+
+4. **Output**: Icons go to `public/assets/icons/<name>.svg`
+
+5. **File key** for Market-360-Design: `oR5AwDiD7ek4IxUOgyZCbU`

@@ -1,18 +1,23 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { sourcesGrid } from "@/lib/sources-data";
 import {
-  ACTIVE_SIGNAL_IDS,
   signalConfigs,
   getCompatibleSignals,
 } from "@/lib/signals-data";
 import { DataCard } from "@/components/ui/DataCard";
 import { InsightPanel } from "@/components/ui/InsightPanel";
+import { Toggle } from "@/components/ui/Toggle";
+import { getAssetPath } from "@/lib/utils";
 
 export default function Home() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [showAiOnly, setShowAiOnly] = useState(false);
+  const [resetHovered, setResetHovered] = useState(false);
 
   const compatibleIds = useMemo(
     () => getCompatibleSignals(selectedIds),
@@ -23,7 +28,6 @@ export default function Home() {
     setSelectedIds((prev) => {
       if (prev.includes(id)) return prev.filter((x) => x !== id);
       if (prev.length >= 3) return prev;
-      if (!ACTIVE_SIGNAL_IDS.includes(id)) return prev;
       const compatible = getCompatibleSignals(prev);
       if (!compatible.includes(id)) return prev;
       return [...prev, id];
@@ -37,6 +41,12 @@ export default function Home() {
         .filter((c): c is NonNullable<typeof c> => Boolean(c)),
     [selectedIds]
   );
+
+  const AI_CHAT_SIGNAL_IDS = ["media", "reviews", "products", "brands", "retailers"];
+
+  const handleReset = useCallback(() => {
+    setSelectedIds([]);
+  }, []);
 
   let cardIndex = 0;
 
@@ -53,10 +63,107 @@ export default function Home() {
       <div
         style={{
           display: "flex",
-          alignItems: "stretch",
-          gap: 5,
+          flexDirection: "column",
+          gap: 24,
         }}
       >
+        {/* Top bar — Toggle + Reset — width = card grid (4×191 + 3×4 = 776px) */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: 776,
+            height: 32,
+          }}
+        >
+          {/* Toggle + label */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <Toggle
+              checked={showAiOnly}
+              onChange={setShowAiOnly}
+            />
+            <span
+              style={{
+                fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                fontSize: 14,
+                fontWeight: 400,
+                lineHeight: "19.6px",
+                color: "rgba(255, 255, 255, 0.8)",
+              }}
+            >
+              Show only signals available in AI chats
+            </span>
+          </div>
+
+          {/* Reset selection — fade-in, fixed-width slot prevents layout shift */}
+          <div
+            style={{
+              minWidth: 150,
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <AnimatePresence>
+              {selectedIds.length > 0 && (
+                <motion.button
+                type="button"
+                onClick={handleReset}
+                onMouseEnter={() => setResetHovered(true)}
+                onMouseLeave={() => setResetHovered(false)}
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 8 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                whileHover={{}}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  outline: "none",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: 14,
+                    fontWeight: 400,
+                    lineHeight: "19.6px",
+                    color: resetHovered ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.7)",
+                    transition: "color 0.15s ease",
+                  }}
+                >
+                  Reset selection
+                </span>
+                <Image
+                  src={getAssetPath("/assets/icons/reload.svg")}
+                  alt=""
+                  width={16}
+                  height={16}
+                  style={{
+                    opacity: resetHovered ? 1 : 0.4,
+                    transition: "opacity 0.15s ease",
+                    filter: "invert(1)",
+                  }}
+                  unoptimized
+                />
+              </motion.button>
+            )}
+            </AnimatePresence>
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "stretch",
+            gap: 5,
+          }}
+        >
         <div
           style={{
             display: "grid",
@@ -68,22 +175,19 @@ export default function Home() {
             row.map((source) => {
               const isSelected = selectedIds.includes(source.id);
               const isHovered = hoveredCard === source.id;
-              const isActiveSignal = ACTIVE_SIGNAL_IDS.includes(source.id);
-
               let isActive = false;
               let isDisabled = false;
 
-              if (!isActiveSignal) {
+              if (showAiOnly && !AI_CHAT_SIGNAL_IDS.includes(source.id)) {
                 isDisabled = true;
-              } else if (selectedIds.length === 0) {
-                isDisabled = false;
-                isActive = false;
-              } else if (isSelected) {
-                // keep defaults
-              } else if (compatibleIds.includes(source.id)) {
-                isActive = true;
-              } else {
-                isDisabled = true;
+              } else if (selectedIds.length > 0) {
+                if (isSelected) {
+                  // keep defaults
+                } else if (compatibleIds.includes(source.id)) {
+                  isActive = true;
+                } else {
+                  isDisabled = true;
+                }
               }
 
               return (
@@ -105,6 +209,7 @@ export default function Home() {
         </div>
 
         <InsightPanel selectedSignals={selectedSignals} />
+        </div>
       </div>
     </main>
   );
