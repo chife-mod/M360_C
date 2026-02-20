@@ -41,7 +41,7 @@ export function DetailPanel() {
       </p>
 
       {/* CTA */}
-      <div className="pt-1">
+      <div className="pt-1 flex items-center gap-1">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -52,7 +52,26 @@ export function DetailPanel() {
             transition-colors duration-200 cursor-pointer
           "
         >
-          Analyze
+          Overview
+        </motion.button>
+        <motion.button
+          whileTap={{ scale: 0.98 }}
+          style={{
+            border: "none",
+            background: "transparent",
+            height: 40,
+            padding: "0 16px",
+            fontSize: 14,
+            fontWeight: 400,
+            color: "rgba(255, 255, 255, 0.45)",
+            cursor: "pointer",
+            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+            outline: "none",
+            transition: "color 0.15s ease",
+          }}
+          whileHover={{ color: "rgba(255, 255, 255, 1)" }}
+        >
+          Apps
         </motion.button>
       </div>
 

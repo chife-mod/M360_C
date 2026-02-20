@@ -1,0 +1,84 @@
+---
+description: M360 project vision, design philosophy and quality standards
+alwaysApply: true
+---
+
+# M360 — Design & Product Manifesto
+
+## What We're Building
+
+**Markets 360** — enterprise-grade analytical intelligence platform for brand monitoring, competitor analysis and market signals. Target audience: CMOs, strategists, analytics teams at major companies.
+
+This is not a startup MVP. Every screen should feel like it could win a SaaS design award.
+
+## Reference Aesthetic
+
+Design bar: **Linear**, **Vercel**, **Stripe**, **Raycast**, **Superwall**.
+
+- Clean, dark-first interfaces with precision spacing
+- Typography-driven hierarchy — text does the heavy lifting
+- Subtle depth through layering, not shadows
+- Motion that feels engineered, not decorated
+
+## Design Principles
+
+### 1. Purposeful Restraint
+Every element must earn its place. If it doesn't communicate something, remove it. No decorative borders, no filler gradients, no lorem ipsum animations.
+
+### 2. Motion Standards
+- Entrances: `easeOut` curves, 200–400ms
+- Exits: faster than entrances, 150–250ms
+- Spring physics for interactive elements (cards, toggles, modals)
+- No motion without meaning — animation should communicate state change
+- Use `framer-motion` as default animation library
+
+### 3. Color
+- Base: near-black backgrounds (`#0a0a0a`, `#0d0d0d`, `#111`)
+- Text hierarchy: `white`, `white/70`, `white/45`, `white/25`
+- Borders: `white/10` default, `white/20` on hover
+- Accent: use sparingly — signal importance, not decoration
+- Status colors: emerald (live/success), blue (demo/info), amber (wip/warning), red (error)
+
+### 4. Spacing & Layout
+- Base unit: 4px. Think in multiples of 4.
+- Cards: `p-5` or `p-6`, `rounded-xl` minimum, never `rounded-md` for primary surfaces
+- Grids: 12-column thinking, prefer 2–3 col on desktop
+- Breathing room matters more than information density
+
+### 5. Typography
+- Font: system font stack or Inter
+- Scale: limited — don't use more than 4 sizes per screen
+- Weight contrast creates hierarchy (semibold titles, regular body, medium labels)
+- All-caps labels: `tracking-widest` + `text-xs` + `font-medium` only
+
+### 6. Interactive States
+Every interactive element must have: default → hover → active → disabled.
+Transitions: always `transition-all duration-200` minimum.
+
+## Tech Stack
+
+- **Framework**: Next.js 16 App Router, TypeScript
+- **Styling**: Tailwind CSS (utility-first, no CSS modules unless canvas/complex)
+- **Animation**: Framer Motion
+- **Icons**: custom SVG or Lucide
+- **Canvas**: raw Canvas2D API for complex particle/physics animations
+- **Deployment**: Netlify (static export)
+
+## File & Component Conventions
+
+- Pages live in `src/app/[route]/page.tsx`
+- Shared components in `src/components/ui/` (atoms) and `src/components/sections/` (organisms)
+- Data/config in `src/lib/`
+- `"use client"` only when hooks or browser APIs are used
+- Named exports for components, default export only for page files
+
+## Dashboard Rule
+
+`/dashboard` is the internal workspace index. When a new page or component demo is completed, add it to the `MODULES` array in `src/app/dashboard/page.tsx`. Status: `live` | `demo` | `wip`.
+
+## Communication Protocol
+
+- Respond in **Russian** to this user
+- When asked to "пушь" (push): update dashboard, update README, commit and push to GitHub
+- Quality bar: if it looks like a template or a bootcamp project, redo it
+- When in doubt: look at Linear.app and ask "would this fit there?"

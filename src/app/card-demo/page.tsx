@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { getAssetPath } from "@/lib/utils";
 
+const GREEN = "rgba(70, 254, 195, 1)";
+
 const STATES = [
   "Default",
   "Hover",
@@ -15,8 +17,6 @@ const STATES = [
 ] as const;
 
 type CardState = (typeof STATES)[number];
-
-const GREEN = "rgba(70, 254, 195, 1)";
 
 const stateFileMap: Record<CardState, string> = {
   Default: "default",
@@ -45,40 +45,43 @@ type S = {
   textOpacity: number;
   textColor: string;
   dotFill: string;
+  showDot: boolean;
 };
 
 const cardStyles: Record<CardState, S> = {
   Default: {
     bg: "rgba(17, 21, 57, 1)",
     borderType: "gradient",
-    gradientStops: "rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%",
+    gradientStops: "rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.18) 100%",
     borderWidth: 1,
-    shadow: "none",
+    shadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
     glowOpacity: 0,
     glowColor: GREEN,
     showCornerGlow: true,
     iconOpacity: 0.4,
-    iconColor: "rgba(255, 255, 255, 1)",
+    iconColor: "rgba(255,255,255,1)",
     iconStrokeWidth: 2,
     textOpacity: 0.7,
-    textColor: "rgba(255, 255, 255, 1)",
+    textColor: "rgba(255,255,255,1)",
     dotFill: "transparent",
+    showDot: true,
   },
   Hover: {
     bg: "rgba(17, 21, 57, 1)",
     borderType: "gradient",
-    gradientStops: "rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%",
+    gradientStops: "rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.35) 100%",
     borderWidth: 1,
-    shadow: "none",
+    shadow: "inset 0 1px 0 rgba(255,255,255,0.18)",
     glowOpacity: 0,
     glowColor: GREEN,
     showCornerGlow: true,
     iconOpacity: 0.4,
-    iconColor: "rgba(255, 255, 255, 1)",
+    iconColor: "rgba(255,255,255,1)",
     iconStrokeWidth: 2,
     textOpacity: 0.7,
-    textColor: "rgba(255, 255, 255, 1)",
+    textColor: "rgba(255,255,255,1)",
     dotFill: "transparent",
+    showDot: true,
   },
   Active: {
     bg: "rgba(17, 21, 57, 1)",
@@ -90,11 +93,12 @@ const cardStyles: Record<CardState, S> = {
     glowColor: GREEN,
     showCornerGlow: true,
     iconOpacity: 0.4,
-    iconColor: "rgba(255, 255, 255, 1)",
+    iconColor: "rgba(255,255,255,1)",
     iconStrokeWidth: 2,
     textOpacity: 0.7,
-    textColor: "rgba(255, 255, 255, 1)",
+    textColor: "rgba(255,255,255,1)",
     dotFill: "transparent",
+    showDot: true,
   },
   "Active Hover": {
     bg: "rgba(17, 21, 57, 1)",
@@ -106,11 +110,12 @@ const cardStyles: Record<CardState, S> = {
     glowColor: GREEN,
     showCornerGlow: true,
     iconOpacity: 0.4,
-    iconColor: "rgba(255, 255, 255, 1)",
+    iconColor: "rgba(255,255,255,1)",
     iconStrokeWidth: 2,
     textOpacity: 0.7,
-    textColor: "rgba(255, 255, 255, 1)",
+    textColor: "rgba(255,255,255,1)",
     dotFill: "transparent",
+    showDot: true,
   },
   Selected: {
     bg: "rgba(17, 21, 57, 1)",
@@ -127,6 +132,7 @@ const cardStyles: Record<CardState, S> = {
     textOpacity: 1,
     textColor: GREEN,
     dotFill: GREEN,
+    showDot: true,
   },
   "Selected Hover": {
     bg: "rgba(17, 21, 57, 1)",
@@ -143,30 +149,135 @@ const cardStyles: Record<CardState, S> = {
     textOpacity: 1,
     textColor: GREEN,
     dotFill: GREEN,
+    showDot: true,
   },
   Disable: {
     bg: "transparent",
     borderType: "solid",
     borderStyle: "dotted",
-    borderColor: "rgba(58, 64, 120, 1)",
+    borderColor: "rgba(58, 64, 120, 0.5)",
     borderWidth: 2,
     shadow: "none",
     glowOpacity: 0,
     glowColor: GREEN,
     showCornerGlow: false,
     iconOpacity: 0.2,
-    iconColor: "rgba(255, 255, 255, 1)",
+    iconColor: "rgba(255,255,255,1)",
     iconStrokeWidth: 1,
     textOpacity: 0.2,
-    textColor: "rgba(255, 255, 255, 1)",
+    textColor: "rgba(255,255,255,1)",
     dotFill: "transparent",
+    showDot: false,
   },
 };
 
+// ─── Single card renderer ─────────────────────────────────────────────────────
+
+function CardImpl({ state, iconSvg }: { state: CardState; iconSvg: string }) {
+  const s = cardStyles[state];
+  const processed = iconSvg
+    ? iconSvg.replace(/stroke-width="[^"]+"/g, `stroke-width="${s.iconStrokeWidth}"`)
+    : "";
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: 191,
+        height: 130,
+        backgroundColor: s.bg,
+        borderRadius: 12,
+        border:
+          s.borderType === "solid"
+            ? `${s.borderWidth}px ${s.borderStyle ?? "solid"} ${s.borderColor}`
+            : "none",
+        boxShadow: s.shadow === "none" ? undefined : s.shadow,
+        overflow: "hidden",
+        flexShrink: 0,
+      }}
+    >
+      {/* Gradient border */}
+      {s.borderType === "gradient" && (
+        <div
+          style={{
+            position: "absolute", inset: 0, borderRadius: 12,
+            padding: `${s.borderWidth}px`,
+            background: `linear-gradient(180deg, ${s.gradientStops})`,
+            WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+            WebkitMaskComposite: "xor",
+            maskComposite: "exclude",
+            pointerEvents: "none",
+            zIndex: 20,
+          }}
+        />
+      )}
+
+      {/* Corner glow TL */}
+      {s.showCornerGlow && (
+        <div style={{
+          position: "absolute", left: -46, top: -46, width: 92, height: 92,
+          borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.22)",
+          filter: "blur(40px)", pointerEvents: "none",
+        }} />
+      )}
+      {/* Corner glow BR */}
+      {s.showCornerGlow && (
+        <div style={{
+          position: "absolute", right: -46, bottom: -46, width: 92, height: 92,
+          borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.22)",
+          filter: "blur(40px)", pointerEvents: "none",
+        }} />
+      )}
+
+      {/* Bottom glow */}
+      <div style={{
+        position: "absolute", left: 32, top: 102, width: 128, height: 128,
+        borderRadius: "50%", backgroundColor: s.iconColor,
+        filter: "blur(40px)", opacity: s.glowOpacity,
+        pointerEvents: "none",
+      }} />
+
+      {/* Content */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 10,
+        display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center",
+        padding: 24, gap: 12,
+      }}>
+        {processed && (
+          <div
+            style={{ width: 32, height: 32, opacity: s.iconOpacity, color: s.iconColor, flexShrink: 0 }}
+            dangerouslySetInnerHTML={{ __html: processed }}
+          />
+        )}
+        <span style={{
+          fontSize: 14, fontWeight: 400, lineHeight: "19.6px",
+          color: s.textColor, opacity: s.textOpacity,
+          whiteSpace: "nowrap",
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+        }}>
+          Brands
+        </span>
+      </div>
+
+      {/* Indicator dot */}
+      {s.showDot && (
+        <div style={{
+          position: "absolute", right: 8, top: 8,
+          width: 12, height: 12, borderRadius: "50%",
+          backgroundColor: s.dotFill,
+          border: "1px solid rgba(255,255,255,0.2)",
+          zIndex: 10, pointerEvents: "none",
+        }} />
+      )}
+    </div>
+  );
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+
 export default function CardDemoPage() {
   const [iconSvg, setIconSvg] = useState("");
-  const [activeState, setActiveState] = useState<CardState>("Default");
-  const [showRef, setShowRef] = useState(true);
 
   useEffect(() => {
     fetch(getAssetPath("/assets/icons/brands.svg"))
@@ -174,292 +285,96 @@ export default function CardDemoPage() {
       .then(setIconSvg);
   }, []);
 
-  const s = cardStyles[activeState];
-
-  const processedIcon = iconSvg
-    ? iconSvg.replace(/stroke-width="[^"]+"/g, `stroke-width="${s.iconStrokeWidth ?? 2}"`)
-    : "";
-
   return (
     <div
       style={{
         minHeight: "100vh",
         backgroundColor: "#111539",
-        display: "flex",
         fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+        padding: "64px 0 80px",
+        overflowX: "hidden",
       }}
     >
-      {/* Switcher */}
-      <div
-        style={{
-          position: "fixed",
-          top: "24px",
-          left: "24px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "6px",
-          zIndex: 100,
-        }}
-      >
-        <span
-          style={{
-            color: "rgba(255,255,255,0.4)",
-            fontSize: "11px",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            marginBottom: "4px",
-          }}
-        >
-          Card State
-        </span>
-        {STATES.map((state) => (
-          <button
-            key={state}
-            onClick={() => setActiveState(state)}
-            style={{
-              padding: "6px 14px",
-              borderRadius: "6px",
-              border:
-                activeState === state
-                  ? "1px solid rgba(100, 110, 202, 1)"
-                  : "1px solid rgba(255,255,255,0.08)",
-              backgroundColor:
-                activeState === state
-                  ? "rgba(100, 110, 202, 0.2)"
-                  : "rgba(255,255,255,0.03)",
-              color:
-                activeState === state
-                  ? "rgba(159, 169, 255, 1)"
-                  : "rgba(255,255,255,0.5)",
-              fontSize: "13px",
-              fontWeight: activeState === state ? 500 : 400,
-              cursor: "pointer",
-              textAlign: "left",
-              fontFamily: "inherit",
-            }}
-          >
-            {state}
-          </button>
-        ))}
-
-        <button
-          onClick={() => setShowRef(!showRef)}
-          style={{
-            marginTop: "16px",
-            padding: "6px 14px",
-            borderRadius: "6px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            backgroundColor: showRef
-              ? "rgba(70, 254, 195, 0.1)"
-              : "rgba(255,255,255,0.03)",
-            color: showRef ? GREEN : "rgba(255,255,255,0.4)",
-            fontSize: "11px",
-            cursor: "pointer",
-            fontFamily: "inherit",
-          }}
-        >
-          {showRef ? "Hide" : "Show"} Figma ref
-        </button>
+      {/* ── Page header ── */}
+      <div style={{ maxWidth: 880, margin: "0 auto 48px", padding: "0 40px" }}>
+        <h1 style={{
+          fontSize: 28, fontWeight: 600, color: "rgba(255,255,255,0.9)",
+          margin: "0 0 8px", letterSpacing: "-0.02em",
+        }}>
+          Card States
+        </h1>
+        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", margin: 0 }}>
+          Figma reference vs. CSS implementation · all 7 states
+        </p>
       </div>
 
-      {/* Cards */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "48px",
-        }}
-      >
-        {/* CSS Card */}
-        <div style={{ textAlign: "center" }}>
+      {/* ── Column headers ── */}
+      <div style={{
+        maxWidth: 880, margin: "0 auto 16px", padding: "0 40px",
+        display: "grid",
+        gridTemplateColumns: "120px 191px 64px 191px",
+        alignItems: "center",
+        gap: 0,
+      }}>
+        <div />
+        <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.25)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+          Figma
+        </span>
+        <div />
+        <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.25)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+          Code
+        </span>
+      </div>
+
+      {/* ── Divider ── */}
+      <div style={{ maxWidth: 880, margin: "0 auto 0", padding: "0 40px" }}>
+        <div style={{ height: 1, backgroundColor: "rgba(255,255,255,0.05)" }} />
+      </div>
+
+      {/* ── Rows ── */}
+      <div style={{ maxWidth: 880, margin: "0 auto", padding: "0 40px" }}>
+        {STATES.map((state, i) => (
           <div
+            key={state}
             style={{
-              position: "relative",
-              width: "191px",
-              height: "130px",
-              backgroundColor: s.bg,
-              borderRadius: "12px",
-              border:
-                s.borderType === "solid"
-                  ? `${s.borderWidth}px ${s.borderStyle ?? "solid"} ${s.borderColor}`
-                  : "none",
-              boxShadow: s.shadow === "none" ? undefined : s.shadow,
-              overflow: "hidden",
-              transition: "all 0.15s ease",
+              display: "grid",
+              gridTemplateColumns: "120px 191px 64px 191px",
+              alignItems: "center",
+              gap: 0,
+              padding: "20px 0",
+              borderBottom: i < STATES.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
             }}
           >
-            {/* Gradient border */}
-            {s.borderType === "gradient" && (
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  borderRadius: "12px",
-                  padding: `${s.borderWidth}px`,
-                  background: `linear-gradient(180deg, ${s.gradientStops})`,
-                  WebkitMask:
-                    "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                  WebkitMaskComposite: "xor",
-                  maskComposite: "exclude",
-                  pointerEvents: "none",
-                  zIndex: 20,
-                }}
-              />
-            )}
+            {/* State label */}
+            <span style={{
+              fontSize: 12, fontWeight: 400,
+              color: "rgba(255,255,255,0.35)",
+              letterSpacing: "0.01em",
+            }}>
+              {state}
+            </span>
 
-            {/* Ellipse 850 — top-left */}
-            {s.showCornerGlow && (
-              <div
-                style={{
-                  position: "absolute",
-                  left: "-46px",
-                  top: "-46px",
-                  width: "92px",
-                  height: "92px",
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(255, 255, 255, 0.14)",
-                  filter: "blur(40px)",
-                  pointerEvents: "none",
-                  transform: "translate3d(0,0,0)",
-                }}
-              />
-            )}
-
-            {/* Ellipse 851 — bottom-right */}
-            {s.showCornerGlow && (
-              <div
-                style={{
-                  position: "absolute",
-                  right: "-46px",
-                  bottom: "-46px",
-                  width: "92px",
-                  height: "92px",
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(255, 255, 255, 0.14)",
-                  filter: "blur(40px)",
-                  pointerEvents: "none",
-                  transform: "translate3d(0,0,0)",
-                }}
-              />
-            )}
-
-            {/* Ellipse 849 — bottom-center green */}
-            <div
-              style={{
-                position: "absolute",
-                left: "32px",
-                top: "102px",
-                width: "128px",
-                height: "128px",
-                borderRadius: "50%",
-                backgroundColor: s.iconColor,
-                filter: "blur(40px)",
-                opacity: s.glowOpacity,
-                pointerEvents: "none",
-                transform: "translate3d(0,0,0)",
-                transition: "opacity 0.2s ease",
-              }}
-            />
-
-            {/* Content */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "24px",
-                gap: "12px",
-                zIndex: 10,
-              }}
-            >
-              {processedIcon && (
-                <div
-                  style={{
-                    width: "32px",
-                    height: "32px",
-                    opacity: s.iconOpacity,
-                    color: s.iconColor,
-                    flexShrink: 0,
-                    transition: "all 0.15s ease",
-                  }}
-                  dangerouslySetInnerHTML={{ __html: processedIcon }}
-                />
-              )}
-
-              <span
-                style={{
-                  fontSize: "14px",
-                  fontWeight: 400,
-                  lineHeight: "19.6px",
-                  letterSpacing: "0px",
-                  textAlign: "center",
-                  color: s.textColor,
-                  opacity: s.textOpacity,
-                  whiteSpace: "nowrap",
-                  transition: "all 0.15s ease",
-                }}
-              >
-                Brands
-              </span>
-            </div>
-
-            {/* Dot */}
-            <div
-              style={{
-                position: "absolute",
-                right: "8px",
-                top: "8px",
-                width: "12px",
-                height: "12px",
-                borderRadius: "50%",
-                backgroundColor: s.dotFill,
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                zIndex: 10,
-                pointerEvents: "none",
-                transition: "all 0.15s ease",
-              }}
-            />
-          </div>
-          <span
-            style={{
-              display: "block",
-              marginTop: "12px",
-              fontSize: "11px",
-              color: "rgba(255,255,255,0.3)",
-            }}
-          >
-            CSS
-          </span>
-        </div>
-
-        {/* Figma reference */}
-        {showRef && (
-          <div style={{ textAlign: "center" }}>
+            {/* Figma ref */}
             <Image
-              src={getAssetPath(`/assets/card-states/${stateFileMap[activeState]}.png`)}
-              alt={activeState}
+              src={getAssetPath(`/assets/card-states/${stateFileMap[state]}.png`)}
+              alt={state}
               width={191}
               height={130}
-              style={{ borderRadius: "12px" }}
+              style={{ borderRadius: 12, display: "block" }}
               unoptimized
             />
-            <span
-              style={{
-                display: "block",
-                marginTop: "12px",
-                fontSize: "11px",
-                color: "rgba(255,255,255,0.3)",
-              }}
-            >
-              Figma
-            </span>
+
+            {/* Diff arrow */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12M12 6l4 4-4 4" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+
+            {/* CSS impl */}
+            <CardImpl state={state} iconSvg={iconSvg} />
           </div>
-        )}
+        ))}
       </div>
     </div>
   );

@@ -53,34 +53,37 @@ type S = {
   iconStrokeWidth: number;
   textOpacity: number;
   dotFill: string;
+  showDot: boolean;
 };
 
 const cardStyles: Record<CardState, S> = {
   default: {
     bg: "rgba(17, 21, 57, 1)",
     borderType: "gradient",
-    gradientStops: "rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%",
+    gradientStops: "rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.18) 100%",
     borderWidth: 1,
-    shadow: "none",
+    shadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
     glowOpacity: 0,
     showCornerGlow: true,
     iconOpacity: 0.4,
     iconStrokeWidth: 2,
     textOpacity: 0.7,
     dotFill: "transparent",
+    showDot: true,
   },
   hover: {
     bg: "rgba(17, 21, 57, 1)",
     borderType: "gradient",
-    gradientStops: "rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%",
+    gradientStops: "rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.35) 100%",
     borderWidth: 1,
-    shadow: "none",
+    shadow: "inset 0 1px 0 rgba(255,255,255,0.18)",
     glowOpacity: 0,
     showCornerGlow: true,
     iconOpacity: 0.4,
     iconStrokeWidth: 2,
     textOpacity: 0.7,
     dotFill: "transparent",
+    showDot: true,
   },
   active: {
     bg: "rgba(17, 21, 57, 1)",
@@ -94,6 +97,7 @@ const cardStyles: Record<CardState, S> = {
     iconStrokeWidth: 2,
     textOpacity: 0.7,
     dotFill: "transparent",
+    showDot: true,
   },
   activeHover: {
     bg: "rgba(17, 21, 57, 1)",
@@ -107,6 +111,7 @@ const cardStyles: Record<CardState, S> = {
     iconStrokeWidth: 2,
     textOpacity: 0.7,
     dotFill: "transparent",
+    showDot: true,
   },
   selected: {
     bg: "rgba(17, 21, 57, 1)",
@@ -120,6 +125,7 @@ const cardStyles: Record<CardState, S> = {
     iconStrokeWidth: 2,
     textOpacity: 1,
     dotFill: "currentColor",
+    showDot: true,
   },
   selectedHover: {
     bg: "rgba(17, 21, 57, 1)",
@@ -133,12 +139,13 @@ const cardStyles: Record<CardState, S> = {
     iconStrokeWidth: 2,
     textOpacity: 1,
     dotFill: "currentColor",
+    showDot: true,
   },
   disabled: {
     bg: "transparent",
     borderType: "solid",
     borderStyle: "dotted",
-    borderColor: "rgba(58, 64, 120, 1)",
+    borderColor: "rgba(58, 64, 120, 0.5)",
     borderWidth: 2,
     shadow: "none",
     glowOpacity: 0,
@@ -147,6 +154,7 @@ const cardStyles: Record<CardState, S> = {
     iconStrokeWidth: 1,
     textOpacity: 0.2,
     dotFill: "transparent",
+    showDot: false,
   },
 };
 
@@ -252,7 +260,7 @@ export function DataCard({
               width: "92px",
               height: "92px",
               borderRadius: "50%",
-              backgroundColor: "rgba(255, 255, 255, 0.14)",
+              backgroundColor: "rgba(255, 255, 255, 0.22)",
               filter: "blur(40px)",
               transform: "translate3d(0,0,0)",
             }}
@@ -269,7 +277,7 @@ export function DataCard({
               width: "92px",
               height: "92px",
               borderRadius: "50%",
-              backgroundColor: "rgba(255, 255, 255, 0.14)",
+              backgroundColor: "rgba(255, 255, 255, 0.22)",
               filter: "blur(40px)",
               transform: "translate3d(0,0,0)",
             }}
@@ -339,19 +347,21 @@ export function DataCard({
         </div>
 
         {/* Ellipse 867 — indicator dot top-right */}
-        <div
-          className="absolute pointer-events-none z-10"
-          style={{
-            right: "8px",
-            top: "8px",
-            width: "12px",
-            height: "12px",
-            borderRadius: "50%",
-            backgroundColor: s.dotFill === "currentColor" ? accentColor : s.dotFill,
-            border: "1px solid rgba(255, 255, 255, 0.2)",
-            transition: "all 0.15s ease",
-          }}
-        />
+        {s.showDot && (
+          <div
+            className="absolute pointer-events-none z-10"
+            style={{
+              right: "8px",
+              top: "8px",
+              width: "12px",
+              height: "12px",
+              borderRadius: "50%",
+              backgroundColor: s.dotFill === "currentColor" ? accentColor : s.dotFill,
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              transition: "all 0.15s ease",
+            }}
+          />
+        )}
       </div>
     </motion.div>
   );

@@ -52,8 +52,8 @@ export function Toggle({
       ? GLOW_OFF_HOVER
       : GLOW_OFF;
 
-  // Figma: On = knob LEFT, Off = knob RIGHT
-  const knobX = isOn ? 0 : KNOB_TRAVEL;
+  // Off = knob LEFT, On = knob RIGHT
+  const knobX = isOn ? KNOB_TRAVEL : 0;
 
   const handleClick = () => {
     if (!disabled && onChange) onChange(!checked);

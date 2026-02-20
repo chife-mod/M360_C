@@ -108,14 +108,15 @@ function SignalIconBadge({
 
   return (
     <motion.div
+      layout
       initial={{ scale: 0.7, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.7, opacity: 0 }}
+      exit={{ scale: 0.6, opacity: 0 }}
       transition={{
-        type: "spring",
-        stiffness: 400,
-        damping: 22,
-        delay: index * 0.07,
+        layout: { type: "spring", stiffness: 350, damping: 28 },
+        scale: { type: "spring", stiffness: 400, damping: 22 },
+        opacity: { duration: 0.18 },
+        delay: index * 0.05,
       }}
       style={{ position: "relative", width: 64, height: 64, flexShrink: 0 }}
     >
@@ -138,9 +139,9 @@ function SignalIconBadge({
   );
 }
 
-type Props = { selectedSignals: SignalConfig[] };
+type Props = { selectedSignals: SignalConfig[]; singleSelect?: boolean };
 
-export function InsightPanel({ selectedSignals }: Props) {
+export function InsightPanel({ selectedSignals, singleSelect = false }: Props) {
   const count = selectedSignals.length;
   const description = getInsightDescription(selectedSignals.map((s) => s.id));
 
@@ -233,15 +234,15 @@ export function InsightPanel({ selectedSignals }: Props) {
           minHeight: 0,
         }}
       >
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {count > 0 && (
             <motion.div
-              key="active-content"
-              initial={{ opacity: 0, y: 10 }}
+              key={singleSelect ? (selectedSignals[0]?.id ?? "single") : "active-content"}
+              initial={{ opacity: 0, y: singleSelect ? 0 : 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              exit={{ opacity: 0, y: singleSelect ? 0 : -10 }}
               transition={{
-                duration: 0.3,
+                duration: singleSelect ? 0.18 : 0.3,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
               style={{
@@ -261,8 +262,10 @@ export function InsightPanel({ selectedSignals }: Props) {
                   width: "100%",
                 }}
               >
-                <div style={{ display: "flex", gap: 16 }}>
-                  <AnimatePresence>
+                <motion.div layout style={{ display: "flex", gap: 16 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                >
+                  <AnimatePresence mode="popLayout">
                     {selectedSignals.map((signal, i) => (
                       <SignalIconBadge
                         key={signal.id}
@@ -271,7 +274,7 @@ export function InsightPanel({ selectedSignals }: Props) {
                       />
                     ))}
                   </AnimatePresence>
-                </div>
+                </motion.div>
                 <div
                   style={{
                     display: "flex",
@@ -336,34 +339,60 @@ export function InsightPanel({ selectedSignals }: Props) {
                 {description}
               </motion.p>
 
-              <motion.button
-                layout
-                transition={{
-                  layout: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
-                }}
-                whileHover={{
-                  backgroundColor: "rgba(255, 255, 255, 0.04)",
-                }}
-                whileTap={{ scale: 0.98 }}
-                style={{
-                  border: "1px solid rgba(255, 255, 255, 0.5)",
-                  borderRadius: 8,
-                  height: 40,
-                  padding: "0 24px",
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: 1,
-                  color: "white",
-                  background: "transparent",
-                  cursor: "pointer",
-                  alignSelf: "flex-start",
-                  fontFamily:
-                    "var(--font-inter), Inter, system-ui, sans-serif",
-                  outline: "none",
-                }}
-              >
-                Analyze
-              </motion.button>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <motion.button
+                  layout
+                  transition={{
+                    layout: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
+                  }}
+                  whileHover={{
+                    backgroundColor: "rgba(255, 255, 255, 0.04)",
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    border: "1px solid rgba(255, 255, 255, 0.5)",
+                    borderRadius: 8,
+                    height: 40,
+                    padding: "0 24px",
+                    fontSize: 14,
+                    fontWeight: 400,
+                    lineHeight: 1,
+                    color: "white",
+                    background: "transparent",
+                    cursor: "pointer",
+                    fontFamily:
+                      "var(--font-inter), Inter, system-ui, sans-serif",
+                    outline: "none",
+                  }}
+                >
+                  Overview
+                </motion.button>
+
+                <motion.button
+                  layout
+                  transition={{
+                    layout: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
+                  }}
+                  whileHover={{ color: "rgba(255, 255, 255, 1)" }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    border: "none",
+                    background: "transparent",
+                    height: 40,
+                    padding: "0 16px",
+                    fontSize: 14,
+                    fontWeight: 400,
+                    lineHeight: 1,
+                    color: "rgba(255, 255, 255, 0.45)",
+                    cursor: "pointer",
+                    fontFamily:
+                      "var(--font-inter), Inter, system-ui, sans-serif",
+                    outline: "none",
+                  }}
+                >
+                  Apps
+                </motion.button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

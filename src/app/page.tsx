@@ -31,13 +31,18 @@ export default function Home() {
 
   const toggleSignal = useCallback((id: string) => {
     setSelectedIds((prev) => {
+      if (showAiOnly) {
+        // Single-select mode: clicking selected deselects, clicking another swaps
+        return prev.includes(id) ? [] : [id];
+      }
+      // Multi-select mode (up to 3, compatibility-based)
       if (prev.includes(id)) return prev.filter((x) => x !== id);
       if (prev.length >= 3) return prev;
       const compatible = getCompatibleSignals(prev);
       if (!compatible.includes(id)) return prev;
       return [...prev, id];
     });
-  }, []);
+  }, [showAiOnly]);
 
   const selectedSignals = useMemo(
     () =>
@@ -97,7 +102,7 @@ export default function Home() {
                 color: "rgba(255, 255, 255, 0.8)",
               }}
             >
-              Show only signals available in AI chats
+              Show only data sources available in LLMs
             </span>
           </div>
 
@@ -183,8 +188,11 @@ export default function Home() {
               let isActive = false;
               let isDisabled = false;
 
-              if (showAiOnly && !AI_CHAT_SIGNAL_IDS.includes(source.id)) {
-                isDisabled = true;
+              if (showAiOnly) {
+                // LLM mode: non-AI cards disabled, AI cards stay default unless selected
+                if (!AI_CHAT_SIGNAL_IDS.includes(source.id)) {
+                  isDisabled = true;
+                }
               } else if (selectedIds.length > 0) {
                 if (isSelected) {
                   // keep defaults
@@ -213,7 +221,7 @@ export default function Home() {
           )}
         </div>
 
-        <InsightPanel selectedSignals={selectedSignals} />
+        <InsightPanel selectedSignals={selectedSignals} singleSelect={showAiOnly} />
         </div>
       </div>
     </main>

@@ -1,3 +1,14 @@
+# M360 — Product Intelligence Platform
+
+## Quick Links
+
+| | Local | Production |
+|---|---|---|
+| **Product page** | [localhost:3000](http://localhost:3000) | [graceful-cendol-0a11de.netlify.app](https://graceful-cendol-0a11de.netlify.app) |
+| **Dashboard** | [localhost:3000/dashboard](http://localhost:3000/dashboard) | [graceful-cendol-0a11de.netlify.app/dashboard](https://graceful-cendol-0a11de.netlify.app/dashboard) |
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
