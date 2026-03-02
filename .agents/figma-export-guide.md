@@ -2,6 +2,18 @@
 
 How to download SVG, PNG @2x, PNG @3x from Figma — pixel-perfect, preserving proportions and frames.
 
+## ⚠️ CRITICAL: Never Use localhost:3845 SVG URLs for Production
+
+The Figma MCP plugin (`get_design_context`) serves SVG assets from `http://localhost:3845/assets/...`.
+These SVGs are generated with **broken sizing**: `width="100%" height="100%" preserveAspectRatio="none"`.
+This makes them stretch to any container size, destroying proportions.
+
+**ALWAYS** export assets via the Figma Images API (scripts below) or patch with:
+```bash
+sed -i '' 's/preserveAspectRatio="none" width="100%" height="100%"/preserveAspectRatio="xMidYMid meet"/g' asset.svg
+# Then add explicit width/height from the viewBox values
+```
+
 ## How It Works
 
 We use the **Figma Images API** (`/v1/images/`) — the same endpoint Figma uses internally when you click "Export". It **renders** the node server-side and returns a temporary download URL (hosted on S3). This guarantees the exported file is identical to what you'd get from the Figma UI.

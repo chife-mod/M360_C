@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { getAssetPath } from "@/lib/utils";
+import { cardStyles as baseStyles, type CardStyleDef } from "@/lib/card-styles";
 
 const GREEN = "rgba(70, 254, 195, 1)";
+const WHITE = "rgba(255,255,255,1)";
 
 const STATES = [
   "Default",
@@ -28,147 +30,24 @@ const stateFileMap: Record<CardState, string> = {
   Disable: "disable",
 };
 
-type S = {
-  bg: string;
-  borderType: "gradient" | "solid" | "none";
-  borderStyle?: "solid" | "dashed" | "dotted";
-  borderColor?: string;
-  gradientStops?: string;
-  borderWidth: number;
-  shadow: string;
-  glowOpacity: number;
+// card-demo extends the shared base styles with display colors
+// (iconColor, textColor, glowColor are card-demo specific — in DataCard they're computed dynamically)
+type S = CardStyleDef & {
   glowColor: string;
-  showCornerGlow: boolean;
-  iconOpacity: number;
   iconColor: string;
-  iconStrokeWidth: number;
-  textOpacity: number;
   textColor: string;
-  dotFill: string;
-  showDot: boolean;
 };
 
+// Base styles come from @/lib/card-styles — single source of truth.
+// Only color overrides are defined here (display-specific for the demo page).
 const cardStyles: Record<CardState, S> = {
-  Default: {
-    bg: "rgba(17, 21, 57, 1)",
-    borderType: "gradient",
-    gradientStops: "rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.18) 100%",
-    borderWidth: 1,
-    shadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
-    glowOpacity: 0,
-    glowColor: GREEN,
-    showCornerGlow: true,
-    iconOpacity: 0.4,
-    iconColor: "rgba(255,255,255,1)",
-    iconStrokeWidth: 2,
-    textOpacity: 0.7,
-    textColor: "rgba(255,255,255,1)",
-    dotFill: "transparent",
-    showDot: true,
-  },
-  Hover: {
-    bg: "rgba(17, 21, 57, 1)",
-    borderType: "gradient",
-    gradientStops: "rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.35) 100%",
-    borderWidth: 1,
-    shadow: "inset 0 1px 0 rgba(255,255,255,0.18)",
-    glowOpacity: 0,
-    glowColor: GREEN,
-    showCornerGlow: true,
-    iconOpacity: 0.4,
-    iconColor: "rgba(255,255,255,1)",
-    iconStrokeWidth: 2,
-    textOpacity: 0.7,
-    textColor: "rgba(255,255,255,1)",
-    dotFill: "transparent",
-    showDot: true,
-  },
-  Active: {
-    bg: "rgba(17, 21, 57, 1)",
-    borderType: "solid",
-    borderColor: "rgba(100, 110, 202, 1)",
-    borderWidth: 1,
-    shadow: "inset 0 -2px 20px rgba(100, 110, 202, 0.86)",
-    glowOpacity: 0,
-    glowColor: GREEN,
-    showCornerGlow: true,
-    iconOpacity: 0.4,
-    iconColor: "rgba(255,255,255,1)",
-    iconStrokeWidth: 2,
-    textOpacity: 0.7,
-    textColor: "rgba(255,255,255,1)",
-    dotFill: "transparent",
-    showDot: true,
-  },
-  "Active Hover": {
-    bg: "rgba(17, 21, 57, 1)",
-    borderType: "solid",
-    borderColor: "rgba(159, 169, 255, 1)",
-    borderWidth: 1,
-    shadow: "inset 0 -2px 20px rgba(100, 110, 202, 0.86)",
-    glowOpacity: 0,
-    glowColor: GREEN,
-    showCornerGlow: true,
-    iconOpacity: 0.4,
-    iconColor: "rgba(255,255,255,1)",
-    iconStrokeWidth: 2,
-    textOpacity: 0.7,
-    textColor: "rgba(255,255,255,1)",
-    dotFill: "transparent",
-    showDot: true,
-  },
-  Selected: {
-    bg: "rgba(17, 21, 57, 1)",
-    borderType: "solid",
-    borderColor: "rgba(100, 110, 202, 1)",
-    borderWidth: 1,
-    shadow: "inset 0 -2px 20px rgba(100, 110, 202, 0.86)",
-    glowOpacity: 0.8,
-    glowColor: GREEN,
-    showCornerGlow: true,
-    iconOpacity: 1,
-    iconColor: GREEN,
-    iconStrokeWidth: 2,
-    textOpacity: 1,
-    textColor: GREEN,
-    dotFill: GREEN,
-    showDot: true,
-  },
-  "Selected Hover": {
-    bg: "rgba(17, 21, 57, 1)",
-    borderType: "solid",
-    borderColor: "rgba(159, 169, 255, 1)",
-    borderWidth: 1,
-    shadow: "inset 0 -2px 20px rgba(100, 110, 202, 0.86)",
-    glowOpacity: 0.8,
-    glowColor: GREEN,
-    showCornerGlow: true,
-    iconOpacity: 1,
-    iconColor: GREEN,
-    iconStrokeWidth: 2,
-    textOpacity: 1,
-    textColor: GREEN,
-    dotFill: GREEN,
-    showDot: true,
-  },
-  Disable: {
-    bg: "transparent",
-    borderType: "solid",
-    borderStyle: "dotted",
-    borderColor: "rgba(58, 64, 120, 0.5)",
-    borderWidth: 2,
-    shadow: "none",
-    glowOpacity: 0,
-    glowColor: GREEN,
-    showCornerGlow: false,
-    iconOpacity: 0.2,
-    iconColor: "rgba(255,255,255,1)",
-    iconStrokeWidth: 1,
-    textOpacity: 0.2,
-    textColor: "rgba(255,255,255,1)",
-    dotFill: "transparent",
-    showDot: false,
-  },
+  Default: { ...baseStyles.default, glowColor: GREEN, iconColor: WHITE, textColor: WHITE },
+  Hover: { ...baseStyles.hover, glowColor: GREEN, iconColor: WHITE, textColor: WHITE },
+  Active: { ...baseStyles.active, glowColor: GREEN, iconColor: WHITE, textColor: WHITE },
+  "Active Hover": { ...baseStyles.activeHover, glowColor: GREEN, iconColor: WHITE, textColor: WHITE },
+  Selected: { ...baseStyles.selected, glowColor: GREEN, iconColor: GREEN, textColor: GREEN },
+  "Selected Hover": { ...baseStyles.selectedHover, glowColor: GREEN, iconColor: GREEN, textColor: GREEN },
+  Disable: { ...baseStyles.disabled, glowColor: GREEN, iconColor: WHITE, textColor: WHITE },
 };
 
 // ─── Single card renderer ─────────────────────────────────────────────────────
@@ -216,7 +95,7 @@ function CardImpl({ state, iconSvg }: { state: CardState; iconSvg: string }) {
       {s.showCornerGlow && (
         <div style={{
           position: "absolute", left: -46, top: -46, width: 92, height: 92,
-          borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.22)",
+          borderRadius: "50%", backgroundColor: `rgba(255,255,255,${s.cornerGlowOpacity})`,
           filter: "blur(40px)", pointerEvents: "none",
         }} />
       )}
@@ -224,7 +103,7 @@ function CardImpl({ state, iconSvg }: { state: CardState; iconSvg: string }) {
       {s.showCornerGlow && (
         <div style={{
           position: "absolute", right: -46, bottom: -46, width: 92, height: 92,
-          borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.22)",
+          borderRadius: "50%", backgroundColor: `rgba(255,255,255,${s.cornerGlowOpacity})`,
           filter: "blur(40px)", pointerEvents: "none",
         }} />
       )}
