@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
+  basePath: "/Market360_Signal_Selector",
   images: {
     unoptimized: true
   },
